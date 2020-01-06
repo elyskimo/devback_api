@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
  name: {
   type: String,
-  trim: true,  
+  trim: true,
   required: true,
  },
  email: {
@@ -19,7 +19,7 @@ const UserSchema = new Schema({
   trim: true,
   required: true
  }
-});
+},{ strict:false });
 // hash user password before saving into database
 UserSchema.pre('save', function(next){
 this.password = bcrypt.hashSync(this.password, saltRounds);
